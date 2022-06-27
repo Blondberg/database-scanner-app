@@ -12,9 +12,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: MyAppBar(title: "Profile page"),
-      bottomNavigationBar: MyBottomNavBar(),
+    return Center(
+      child: Text("hello world!"),
     );
   }
 }

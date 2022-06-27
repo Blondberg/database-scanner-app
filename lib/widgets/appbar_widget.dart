@@ -1,3 +1,4 @@
+import 'package:database_scanner_app/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,17 +9,23 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-        ),
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: Container(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: const Icon(Icons.arrow_back_ios_new_rounded, size: 16),
+              child: Navigator.canPop(context)
+                  ? TextButton(
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        size: 16,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    )
+                  : Container(),
             ),
             Expanded(
               child: Text(
@@ -26,9 +33,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 title.toUpperCase(),
                 style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 1.5),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1.5,
+                  ),
                 ),
               ),
             ),
